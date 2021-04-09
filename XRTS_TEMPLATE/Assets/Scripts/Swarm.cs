@@ -13,6 +13,7 @@ public class Swarm : MonoBehaviour
     public float m_neighbor_avoid_multiplier;
     public float m_neighbor_align_multiplier;
     public float m_goal_seek_multiplier;
+    public float m_goal_detect_radius;
 
     public Transform m_goal;
 
@@ -45,7 +46,7 @@ public class Swarm : MonoBehaviour
             seeking = Vector2.zero;
         }
         
-        m_motor.m_velocity += cohesion + alignment + avoidance + seeking;
+        m_motor.m_direction += cohesion + alignment + avoidance + seeking;
 
         
     }
@@ -61,6 +62,10 @@ public class Swarm : MonoBehaviour
 
                 neighbors.Add(c.transform);
             }
+            else if(c.gameObject.CompareTag("Construct"))
+            {
+                m_goal = c.transform;
+            }
         }
         return neighbors;
     }
@@ -71,7 +76,7 @@ public class Swarm : MonoBehaviour
         Collider2D[] neighborColliders = Physics2D.OverlapCircleAll(transform.position, m_neighbor_detect_radius);
         foreach (Collider2D c in neighborColliders)
         {
-            if (c != m_collider)
+            if (c != m_collider && !c.gameObject.CompareTag("Construct"))
             {
 
                 neighbors.Add(c.transform);
