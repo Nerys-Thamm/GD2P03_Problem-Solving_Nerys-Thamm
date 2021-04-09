@@ -175,8 +175,8 @@ MonoBehaviour:
   m_neighbor_detect_radius: 5
   m_neighbor_seek_multiplier: 20
   m_neighbor_avoid_radius: 0.8
-  m_neighbor_avoid_multiplier: 2000
-  m_neighbor_align_multiplier: 0.5
+  m_neighbor_avoid_multiplier: 10000
+  m_neighbor_align_multiplier: 10
   m_goal_seek_multiplier: 25
   m_goal_detect_radius: 0
   m_goal: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_velocity: {x: 0, y: 0}
   m_direction: {x: 0, y: 0}
   m_max_speed: 1
+  m_collision_radius: 1
   m_animhelper: {fileID: 812587709661616506}
 --- !u!114 &227277977
 MonoBehaviour:
