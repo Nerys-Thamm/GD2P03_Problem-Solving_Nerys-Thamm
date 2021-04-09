@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1734692325788185455}
   - component: {fileID: 227277977}
   - component: {fileID: 812587709661616506}
+  - component: {fileID: 4718022248385448658}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -172,12 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bc74ecef9834443b0c5b9921b2433e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_neighbor_detect_radius: 5
+  m_neighbor_detect_radius: 4
   m_neighbor_seek_multiplier: 20
-  m_neighbor_avoid_radius: 0.8
-  m_neighbor_avoid_multiplier: 10000
-  m_neighbor_align_multiplier: 10
-  m_goal_seek_multiplier: 25
+  m_neighbor_avoid_radius: 0.7
+  m_neighbor_avoid_multiplier: 6000
+  m_neighbor_align_multiplier: 20
+  m_goal_seek_multiplier: 30
   m_goal_detect_radius: 0
   m_goal: {fileID: 0}
   m_velocity: {x: 0, y: 0}
@@ -224,3 +225,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Velocity: {x: 0, y: 0}
   m_AttachedSprite: {fileID: 812587709661616511}
+--- !u!50 &4718022248385448658
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812587709661616510}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
