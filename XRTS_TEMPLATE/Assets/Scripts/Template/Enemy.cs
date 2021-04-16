@@ -9,4 +9,8 @@ public class Enemy : MonoBehaviour
         // Hooks us up to the enemy manager by default so that we can find it later without searching the scene
         FindObjectOfType<EnemyManager>().m_Enemies.Add(this);
     }
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 }

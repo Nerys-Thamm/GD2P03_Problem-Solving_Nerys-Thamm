@@ -7,13 +7,21 @@ using UnityEngine;
 [RequireComponent(typeof(Motor))]
 public class Swarm : MonoBehaviour
 {
+    [Range(0.0f, 10.0f)]
     public float m_neighbor_detect_radius;
+    [Range(0.0f, 10.0f)]
     public float m_neighbor_seek_multiplier;
+    [Range(0.0f, 1.0f)]
     public float m_neighbor_avoid_radius;
+    [Range(0.0f, 10.0f)]
     public float m_neighbor_avoid_multiplier;
+    [Range(0.0f, 100.0f)]
+    public float m_wall_avoid_multiplier;
+    [Range(0.0f, 10.0f)]
     public float m_neighbor_align_multiplier;
+    [Range(0.0f, 10.0f)]
     public float m_goal_seek_multiplier;
-    public float m_goal_detect_radius;
+    
 
     public Transform m_goal;
 
@@ -33,20 +41,21 @@ public class Swarm : MonoBehaviour
     void Update()
     {
         m_velocity = m_motor.m_velocity;
-        Vector2 cohesion = ((GetMeanPosition(GetAINeighbors()) - (Vector2)transform.position)) * m_neighbor_seek_multiplier;
-        Vector2 alignment = GetMeanVelocity(GetAINeighbors()) * m_neighbor_align_multiplier;
-        Vector2 avoidance = GetAvoidanceVelocity(GetNeighbors()) * m_neighbor_avoid_multiplier;
+        Vector2 cohesion = ((GetMeanPosition(GetAINeighbors()) - (Vector2)transform.position)).normalized * m_neighbor_seek_multiplier;
+        Vector2 alignment = GetMeanVelocity(GetAINeighbors()).normalized * m_neighbor_align_multiplier;
+        Vector2 avoidance = GetAvoidanceVelocity(GetAINeighbors()).normalized * m_neighbor_avoid_multiplier;
+        Vector2 wallavoidance = GetAvoidanceVelocity(GetWalls()).normalized * m_wall_avoid_multiplier;
         Vector2 seeking;
         if(m_goal != null)
         {
-            seeking = ((Vector2)m_goal.position - (Vector2)transform.position) * m_goal_seek_multiplier;
+            seeking = ((Vector2)m_goal.position - (Vector2)transform.position).normalized * m_goal_seek_multiplier;
         }
         else
         {
             seeking = Vector2.zero;
         }
         
-        m_motor.m_direction += cohesion + alignment + avoidance + seeking;
+        m_motor.m_direction += cohesion + alignment + avoidance + seeking + wallavoidance;
 
         
     }
@@ -83,6 +92,21 @@ public class Swarm : MonoBehaviour
             }
         }
         return neighbors;
+    }
+
+    List<Transform> GetWalls()
+    {
+        List<Transform> walls = new List<Transform>();
+        Collider2D[] wallColliders = Physics2D.OverlapCircleAll(transform.position, m_neighbor_detect_radius);
+        foreach (Collider2D c in wallColliders)
+        {
+            if (c.gameObject.CompareTag("Wall"))
+            {
+
+                walls.Add(c.transform);
+            }
+        }
+        return walls;
     }
 
     Vector2 GetMeanPosition(List<Transform> transforms)
@@ -144,5 +168,7 @@ public class Swarm : MonoBehaviour
         }
         return mean;
     }
+
+    
 
 }
