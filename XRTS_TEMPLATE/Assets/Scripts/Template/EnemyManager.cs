@@ -25,11 +25,12 @@ public class EnemyManager : MonoBehaviour
                 m_Enemies.RemoveAt(i);
             }
         }
-        if(m_toggleAI)
+        if(m_toggleAI || Input.GetKeyDown(KeyCode.E))
         {
             m_toggleAI = false;
             ToggleAI();
         }
+
     }
 
     private void ToggleAI()
