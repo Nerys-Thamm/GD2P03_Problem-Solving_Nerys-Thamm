@@ -59,9 +59,15 @@ public class Swarm : MonoBehaviour
         Debug.DrawRay(transform.position, avoidance.normalized, Color.red);
         Debug.DrawRay(transform.position, wallavoidance.normalized, Color.red);
         Debug.DrawRay(transform.position, seeking, Color.green);
+        
         m_motor.m_direction += cohesion + alignment + avoidance + seeking + wallavoidance;
 
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, m_neighbor_detect_radius);
     }
 
     List<Transform> GetAINeighbors()
