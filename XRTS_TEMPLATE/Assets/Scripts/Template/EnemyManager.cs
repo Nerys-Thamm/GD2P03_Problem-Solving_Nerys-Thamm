@@ -7,6 +7,9 @@ public class EnemyManager : MonoBehaviour
     public ConstructManager m_ConstructManager;
     public List<Enemy> m_Enemies;
 
+    public bool m_toggleAI;
+    public bool m_isAI = true;
+
     public Transform GetTarget()
     {
         return m_ConstructManager.GetConstruct();
@@ -21,6 +24,21 @@ public class EnemyManager : MonoBehaviour
             {
                 m_Enemies.RemoveAt(i);
             }
+        }
+        if(m_toggleAI)
+        {
+            m_toggleAI = false;
+            ToggleAI();
+        }
+    }
+
+    private void ToggleAI()
+    {
+        m_isAI = !m_isAI;
+        foreach(Enemy e in m_Enemies)
+        {
+            e.GetComponent<Swarm>().enabled = m_isAI;
+            e.GetComponent<ManualControl>().enabled = !m_isAI;
         }
     }
 }

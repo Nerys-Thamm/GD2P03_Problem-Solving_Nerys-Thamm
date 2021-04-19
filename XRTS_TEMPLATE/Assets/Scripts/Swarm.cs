@@ -42,7 +42,7 @@ public class Swarm : MonoBehaviour
     {
         m_velocity = m_motor.m_velocity;
         Vector2 cohesion = ((GetMeanPosition(GetAINeighbors()) - (Vector2)transform.position)).normalized * m_neighbor_seek_multiplier;
-        Vector2 alignment = GetMeanVelocity(GetAINeighbors()).normalized * m_neighbor_align_multiplier;
+        Vector2 alignment = (GetMeanVelocity(GetAINeighbors()).normalized) * m_neighbor_align_multiplier;
         Vector2 avoidance = GetAvoidanceVelocity(GetAINeighbors()).normalized * m_neighbor_avoid_multiplier;
         Vector2 wallavoidance = GetAvoidanceVelocity(GetWalls()).normalized * m_wall_avoid_multiplier;
         Vector2 seeking;
@@ -54,7 +54,11 @@ public class Swarm : MonoBehaviour
         {
             seeking = Vector2.zero;
         }
-        
+        Debug.DrawRay(transform.position, cohesion, Color.blue);
+        Debug.DrawRay(transform.position, alignment, Color.white);
+        Debug.DrawRay(transform.position, avoidance.normalized, Color.red);
+        Debug.DrawRay(transform.position, wallavoidance.normalized, Color.red);
+        Debug.DrawRay(transform.position, seeking, Color.green);
         m_motor.m_direction += cohesion + alignment + avoidance + seeking + wallavoidance;
 
         
@@ -130,15 +134,16 @@ public class Swarm : MonoBehaviour
     {
         if (transforms.Count == 0)
         {
-            return m_motor.m_velocity;
+            return Vector2.zero;
         }
         Vector2 mean = Vector2.zero;
 
         foreach (Transform t in transforms)
         {
+
+
+            mean += (Vector2)t.gameObject.GetComponent<Motor>().m_direction;
             
-            
-             mean += (Vector2)t.gameObject.GetComponent<Swarm>().m_velocity;
             
         }
         return (mean / transforms.Count);

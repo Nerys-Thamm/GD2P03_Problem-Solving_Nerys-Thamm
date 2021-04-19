@@ -16,7 +16,7 @@ public class Motor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_direction = Vector2.zero;
     }
 
     // Update is called once per frame

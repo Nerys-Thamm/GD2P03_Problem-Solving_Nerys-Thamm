@@ -21555,6 +21555,24 @@ MonoBehaviour:
     m_SpawnZ: 0
     m_UISprite: {fileID: -4306613086922448828, guid: 91fcb9ec87c6a5344897624b99036025,
       type: 3}
+  - m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    m_Prefab: {fileID: 3355518187775016528, guid: 613b5ca7f935626459a1223d7e947c3b,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: -5810505651898032311, guid: 7a2f2b1669b4536488355bb2ea30dc7e,
+      type: 3}
+  - m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    m_Prefab: {fileID: 8613953921341708834, guid: d870f767e53356949aa0c91c95c2935b,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 4546897981838448204, guid: cab0c4459f7e86d4e9d80bd49a05785c,
+      type: 3}
   m_SpawnOptionDisplays:
   - {fileID: 165110484}
   - {fileID: 1575006450}

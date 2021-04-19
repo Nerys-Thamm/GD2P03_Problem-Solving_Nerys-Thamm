@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8613953921341708835}
   - component: {fileID: 6665243653454555756}
   - component: {fileID: 5260111924284784591}
+  - component: {fileID: 5877240136426784757}
   - component: {fileID: 7681950874885173840}
   - component: {fileID: 7268475814925971507}
   - component: {fileID: 8992577144137105349}
@@ -35,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613953921341708834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2238486, y: 0.06410575, z: -5.5117664}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -190,6 +191,18 @@ MonoBehaviour:
   m_AttackLayerMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &5877240136426784757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613953921341708834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcfa68d6dc400841ae698b2abf279e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7681950874885173840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +220,7 @@ MonoBehaviour:
   m_neighbor_avoid_radius: 1
   m_neighbor_avoid_multiplier: 10
   m_wall_avoid_multiplier: 100
-  m_neighbor_align_multiplier: 0
+  m_neighbor_align_multiplier: 0.1
   m_goal_seek_multiplier: 7
   m_goal: {fileID: 0}
   m_velocity: {x: 0, y: 0}

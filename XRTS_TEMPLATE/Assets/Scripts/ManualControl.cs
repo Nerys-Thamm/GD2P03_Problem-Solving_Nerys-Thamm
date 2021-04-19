@@ -18,19 +18,33 @@ public class ManualControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(2))
+        if(Input.GetMouseButton(2))
         {
-            Vector2 mousedirection = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, mousedirection, mousedirection.magnitude);
-            if(!(hit.collider != null && hit.collider.CompareTag("Wall")))
+            Vector2 mousedirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(gameObject.transform.position, mousedirection, mousedirection.magnitude);
+            
+            bool pathblocked = false;
+            foreach(RaycastHit2D hit in hits)
             {
-                m_motor.m_direction += mousedirection.normalized;
+                if(hit.collider != null && hit.collider.gameObject.CompareTag("Wall"))
+                {
+                    pathblocked = true;
+                }
+            }
+            if(!pathblocked)
+            {
+                m_motor.m_direction = mousedirection.normalized;
+                Debug.DrawRay(transform.position, mousedirection, Color.green);
             }
             else
             {
                 m_motor.m_direction = Vector2.zero;
             }
 
+        }
+        else
+        {
+            m_motor.m_direction = Vector2.zero;
         }
     }
 }

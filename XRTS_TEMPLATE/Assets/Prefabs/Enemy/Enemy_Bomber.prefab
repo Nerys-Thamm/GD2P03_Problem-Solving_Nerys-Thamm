@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3355518187775016529}
   - component: {fileID: 1289279215620627389}
   - component: {fileID: 5677073626719832183}
+  - component: {fileID: 5607091650765439050}
   - component: {fileID: 3711000101261334050}
   - component: {fileID: 4450976239678182465}
   - component: {fileID: 2726883618373786551}
@@ -35,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3355518187775016528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38723534, y: -2.1498835, z: -6.0156727}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -201,6 +202,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Effects:
   - {fileID: 2117199533760081284, guid: f31dc77c25867e54c913812d49b71a83, type: 3}
+--- !u!114 &5607091650765439050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355518187775016528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcfa68d6dc400841ae698b2abf279e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3711000101261334050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +231,7 @@ MonoBehaviour:
   m_neighbor_avoid_radius: 0.7
   m_neighbor_avoid_multiplier: 6.63
   m_wall_avoid_multiplier: 100
-  m_neighbor_align_multiplier: 0.7
+  m_neighbor_align_multiplier: 0.2
   m_goal_seek_multiplier: 10
   m_goal: {fileID: 0}
   m_velocity: {x: 0, y: 0}
