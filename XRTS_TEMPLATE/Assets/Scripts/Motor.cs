@@ -1,6 +1,23 @@
-﻿using System.Collections;
+﻿// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// 
+// (c) 2021 Media Design School
+//
+// File Name   : 
+// Description : 
+// Author      : Nerys Thamm
+// Mail        : nerys.thamm@mds.ac.nz
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+/// <summary>
+/// The motor.
+/// </summary>
 
 public class Motor : MonoBehaviour
 {
@@ -14,12 +31,23 @@ public class Motor : MonoBehaviour
     public float m_collision_radius;
     public AnimatedCharacterSpriteHelper m_animhelper;
     // Start is called before the first frame update
+
+    
+    // ********************************************************************************
+    /// <summary>
+    /// 
+    /// </summary>
+    // ********************************************************************************
     void Start()
     {
         m_direction = Vector2.zero;
     }
 
-    // Update is called once per frame
+    // ********************************************************************************
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
+    // ********************************************************************************
     void Update()
     {
         if(m_velocity.sqrMagnitude > m_max_speed*m_max_speed || true)

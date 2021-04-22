@@ -1,6 +1,21 @@
-﻿using System.Collections;
+﻿// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// 
+// (c) 2021 Media Design School
+//
+// File Name   : 
+// Description : 
+// Author      : Nerys Thamm
+// Mail        : nerys.thamm@mds.ac.nz
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// The enemy manager.
+/// </summary>
 
 public class EnemyManager : MonoBehaviour
 {
@@ -10,11 +25,19 @@ public class EnemyManager : MonoBehaviour
     public bool m_toggleAI;
     public bool m_isAI = true;
 
+    /// <summary>
+    /// Gets the target.
+    /// </summary>
+    /// <returns>A Transform.</returns>
     public Transform GetTarget()
     {
         return m_ConstructManager.GetConstruct();
     }
 
+
+    /// <summary>
+    /// Update is called every frame.
+    /// </summary>
     private void Update()
     {
         // Constantly checks and removes any null enemies (ones destroyed or cleared somehow)
@@ -25,6 +48,8 @@ public class EnemyManager : MonoBehaviour
                 m_Enemies.RemoveAt(i);
             }
         }
+
+        //Toggle the AI for enemies on keypress or bool enabled
         if(m_toggleAI || Input.GetKeyDown(KeyCode.E))
         {
             m_toggleAI = false;
@@ -33,6 +58,9 @@ public class EnemyManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Toggles the ai.
+    /// </summary>
     private void ToggleAI()
     {
         m_isAI = !m_isAI;
