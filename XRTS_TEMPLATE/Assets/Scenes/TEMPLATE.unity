@@ -10873,6 +10873,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 835670776}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &837754346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837754348}
+  - component: {fileID: 837754347}
+  m_Layer: 0
+  m_Name: NavGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837754347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837754346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a476939a52696b4fb187dcbe6e8ce25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeflowfield: 0
+  m_origin: {x: -12, y: -8, z: 0}
+  m_width: 24
+  m_height: 16
+  m_cellradius: 0.5
+--- !u!4 &837754348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837754346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &844176139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11749,6 +11797,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a815aded584f00d46b2ce62ead11308a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnConstructDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 837754347}
+        m_MethodName: GenerateFlowfield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Constructs: []
 --- !u!114 &927352250
 MonoBehaviour:
@@ -21714,6 +21776,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7e66b8a16a554498462a1ae9538b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 837754347}
+        m_MethodName: GenerateFlowfield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_TileHighlight: {fileID: 1211096510}
   m_MouseTarget: {fileID: 113755651}
   m_EnvironmentGenerator: {fileID: 260259699}
