@@ -40,7 +40,8 @@ public class Motor : MonoBehaviour
     // ********************************************************************************
     void Start()
     {
-        m_direction = Vector2.zero;
+        m_direction = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+        
     }
 
     // ********************************************************************************
@@ -50,14 +51,23 @@ public class Motor : MonoBehaviour
     // ********************************************************************************
     void Update()
     {
-        if(m_velocity.sqrMagnitude > m_max_speed*m_max_speed || true)
+        if(m_velocity.sqrMagnitude > m_max_speed*m_max_speed)
         {
             m_velocity = m_velocity.normalized * m_max_speed;
         }
         
-        Vector3 newDirection = Vector3.RotateTowards(m_velocity, m_direction.normalized, Time.deltaTime*2, 1.0f);
+        Vector3 newDirection = Vector3.RotateTowards(m_velocity, m_direction.normalized, Time.deltaTime*2 , 1.0f);
+        
         Vector3 previousPosition = transform.position;
-        transform.position += ((Vector3)newDirection * m_speed_multiplier) * Time.deltaTime;
+        m_velocity = ((Vector3)newDirection * m_speed_multiplier) * Time.deltaTime;
+        if (m_velocity.sqrMagnitude > m_max_speed * m_max_speed)
+        {
+            m_velocity = m_velocity.normalized * m_max_speed;
+        }
+        if (!m_animhelper.m_AttachedSprite.m_IsAttacking)
+        {
+            transform.position += (Vector3)m_velocity;
+        }
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, m_collision_radius);
         List<Collider2D> colliders = new List<Collider2D>();
         foreach(Collider2D c in collisions)

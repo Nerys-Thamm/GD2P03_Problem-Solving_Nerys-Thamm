@@ -226,15 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bc74ecef9834443b0c5b9921b2433e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_neighbor_detect_radius: 6
-  m_neighbor_seek_multiplier: 0.7
-  m_neighbor_avoid_radius: 0.7
-  m_neighbor_avoid_multiplier: 6.63
-  m_wall_avoid_multiplier: 100
-  m_neighbor_align_multiplier: 0.2
-  m_goal_seek_multiplier: 10
-  m_goal: {fileID: 0}
   m_velocity: {x: 0, y: 0}
+  m_data: {fileID: 11400000, guid: afb1cfa65f65c4946a1caa1fbfaadcb9, type: 2}
 --- !u!114 &4450976239678182465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_velocity: {x: 0, y: 0}
   m_direction: {x: 0, y: 0}
-  m_speed_multiplier: 0.54
-  m_max_speed: 0.005
+  m_speed_multiplier: 1
+  m_max_speed: 1
   m_collision_radius: 1
   m_animhelper: {fileID: 3355518187775016532}
 --- !u!114 &2726883618373786551

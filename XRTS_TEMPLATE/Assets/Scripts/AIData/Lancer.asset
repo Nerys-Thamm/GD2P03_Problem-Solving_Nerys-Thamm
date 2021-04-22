@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f11a09fd38d9cb409f949b1e238e842, type: 3}
+  m_Name: Lancer
+  m_EditorClassIdentifier: 
+  m_neighbor_detect_radius: 2.1
+  m_neighbor_seek_multiplier: 0.052
+  m_neighbor_avoid_radius: 0.88
+  m_neighbor_avoid_multiplier: 0.339
+  m_wall_avoid_multiplier: 0.289
+  m_neighbor_align_multiplier: 0.073
+  m_goal_seek_multiplier: 1
