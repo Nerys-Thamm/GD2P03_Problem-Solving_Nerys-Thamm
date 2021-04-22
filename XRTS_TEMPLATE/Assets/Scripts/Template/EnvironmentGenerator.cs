@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnvironmentGenerator : MonoBehaviour
 {
@@ -51,22 +49,22 @@ public class EnvironmentGenerator : MonoBehaviour
     private void RegenerateTiles()
     {
         float originX = transform.position.x - (float)m_Extents.x * 0.5f + m_TileSize * 0.5f;
-        float originY = transform.position.y - (float)m_Extents.y * 0.5f + m_TileSize * 0.5f; 
-        
+        float originY = transform.position.y - (float)m_Extents.y * 0.5f + m_TileSize * 0.5f;
+
         m_Tiles = new EnvironmentTile[m_Extents.x * m_Extents.y];
         for (int x = 0; x < m_Extents.x; x++)
         {
             for (int y = 0; y < m_Extents.y; y++)
             {
                 Vector3 pos = new Vector3(originX + (float)x * m_TileSize, originY + (float)y * m_TileSize, transform.position.z);
-                
+
                 GameObject tile = Instantiate(m_TilePrefab, transform);
                 tile.name = m_TilePrefab.name + " [" + x.ToString() + ", " + y.ToString() + "]";
                 tile.transform.localPosition = pos;
 
-                m_Tiles[x * m_Extents.y + y] = tile.GetComponent<EnvironmentTile>();      
+                m_Tiles[x * m_Extents.y + y] = tile.GetComponent<EnvironmentTile>();
             }
-        }      
+        }
     }
 
     public void CalculateSprites()

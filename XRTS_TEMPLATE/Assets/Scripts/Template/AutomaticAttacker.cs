@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class AutomaticAttacker : MonoBehaviour
@@ -11,6 +9,7 @@ public class AutomaticAttacker : MonoBehaviour
     public float m_AttackRadius = 0.25f;
     public float m_AttackCooldown = 0.25f;
     private float m_Timer = 0.0f;
+
     [SerializeField]
     public UnityEvent OnAttack;
 
@@ -38,10 +37,9 @@ public class AutomaticAttacker : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, m_AttackRadius, m_AttackLayerMask);
         if (hitCollider)
         {
-            
             m_AttachedSprite.m_IsAttacking = true;
             m_AttachedSprite.m_AttackPosition = hitCollider.transform.position;
-            
+
             m_Timer -= Time.deltaTime;
             if (m_Timer <= 0.0f)
             {
@@ -50,10 +48,9 @@ public class AutomaticAttacker : MonoBehaviour
                 if (target)
                 {
                     target.TakeDamage(transform.position, m_DamageDealt);
-                    
                 }
                 m_Timer = m_AttackCooldown;
-            }            
+            }
         }
         else
         {

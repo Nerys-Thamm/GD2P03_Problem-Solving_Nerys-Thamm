@@ -1,9 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ConstructManager : MonoBehaviour
 {
+    public UnityEvent OnConstructDestroyed;
+
     public List<Construct> m_Constructs = new List<Construct>(128);
 
     // Can be used to quickly get a valid construct (if one exists)
@@ -26,6 +28,7 @@ public class ConstructManager : MonoBehaviour
         {
             if (!m_Constructs[i])
             {
+                OnConstructDestroyed.Invoke();
                 m_Constructs.RemoveAt(i);
             }
         }

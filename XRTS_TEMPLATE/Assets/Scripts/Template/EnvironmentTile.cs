@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnvironmentTile : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class EnvironmentTile : MonoBehaviour
     public void CalculateTileSprite(float _tileSize)
     {
         bool s = Physics2D.OverlapPoint(transform.position, m_EnvironmentLayerMask);
-        
+
         bool u = Physics2D.OverlapPoint(transform.position + new Vector3(0.0f, 1.0f, 0.0f) * _tileSize, m_EnvironmentLayerMask);
         bool d = Physics2D.OverlapPoint(transform.position + new Vector3(0.0f, -1.0f, 0.0f) * _tileSize, m_EnvironmentLayerMask);
         bool l = Physics2D.OverlapPoint(transform.position + new Vector3(-1.0f, 0.0f, 0.0f) * _tileSize, m_EnvironmentLayerMask);
@@ -36,43 +34,53 @@ public class EnvironmentTile : MonoBehaviour
         switch (c)
         {
             case 0:
-            {
-                spriteIndex = 0;
-            } break;
+                {
+                    spriteIndex = 0;
+                }
+                break;
+
             case 1:
-            {
-                spriteIndex = 1;
-                angle = (r) ? 90.0f : angle; 
-                angle = (u) ? 180.0f : angle; 
-                angle = (l) ? 270.0f : angle; 
-            } break;
+                {
+                    spriteIndex = 1;
+                    angle = (r) ? 90.0f : angle;
+                    angle = (u) ? 180.0f : angle;
+                    angle = (l) ? 270.0f : angle;
+                }
+                break;
+
             case 2:
-            {
-                if ((u && d) || (l && r))
                 {
-                    spriteIndex = 2;
-                    angle = (l && r) ? 90.0f : angle;
+                    if ((u && d) || (l && r))
+                    {
+                        spriteIndex = 2;
+                        angle = (l && r) ? 90.0f : angle;
+                    }
+                    else
+                    {
+                        spriteIndex = 3;
+                        angle = (r && u) ? 90.0f : angle;
+                        angle = (u && l) ? 180.0f : angle;
+                        angle = (l && d) ? 270.0f : angle;
+                    }
                 }
-                else
-                {
-                    spriteIndex = 3;
-                    angle = (r && u) ? 90.0f : angle; 
-                    angle = (u && l) ? 180.0f : angle;
-                    angle = (l && d) ? 270.0f : angle;
-                }
-            } break;
+                break;
+
             case 3:
-            {
-                spriteIndex = 4;
-                angle = (!d) ? 90.0f : angle; 
-                angle = (!r) ? 180.0f : angle; 
-                angle = (!u) ? 270.0f : angle; 
-            } break;
+                {
+                    spriteIndex = 4;
+                    angle = (!d) ? 90.0f : angle;
+                    angle = (!r) ? 180.0f : angle;
+                    angle = (!u) ? 270.0f : angle;
+                }
+                break;
+
             case 4:
-            {
-                spriteIndex = 5;
-            } break;
-            default: {} break;
+                {
+                    spriteIndex = 5;
+                }
+                break;
+
+            default: { } break;
         }
 
         if (s)
@@ -120,6 +128,6 @@ public class EnvironmentTile : MonoBehaviour
             m_LowerRenderer.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angle);
             m_LowerRenderer.flipX = flipX;
             m_LowerRenderer.flipY = flipY;
-        }  
+        }
     }
 }

@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MouseSpawner : MonoBehaviour
 {
+    public UnityEvent OnChange;
+
     [Header("Internal Components")]
     public Transform m_TileHighlight;
+
     public Transform m_MouseTarget;
 
     [Header("External Components")]
@@ -37,11 +40,12 @@ public class MouseSpawner : MonoBehaviour
             m_Prefab = _prefab;
             m_SpawnZ = _spawnZ;
             m_UISprite = _uiSprite;
-        }   
+        }
     }
 
     [Header("Spawn Options")]
     private float m_CurrentScrollWheel = 0.0f;
+
     private int m_CurrentSpawnIndex = 0;
     public SpawnOption[] m_SpawnOptions;
 
@@ -68,7 +72,7 @@ public class MouseSpawner : MonoBehaviour
     {
         int prior = (m_CurrentSpawnIndex + m_SpawnOptions.Length - 1) % m_SpawnOptions.Length;
         int next = (m_CurrentSpawnIndex + m_SpawnOptions.Length + 1) % m_SpawnOptions.Length;
-        
+
         m_SpawnOptionDisplays[0].sprite = m_SpawnOptions[prior].m_UISprite;
         m_SpawnOptionDisplays[1].sprite = m_SpawnOptions[m_CurrentSpawnIndex].m_UISprite;
         m_SpawnOptionDisplays[2].sprite = m_SpawnOptions[next].m_UISprite;
@@ -91,6 +95,7 @@ public class MouseSpawner : MonoBehaviour
 
     private bool PlaceObject()
     {
+        OnChange.Invoke();
         bool blockedPlacement = false;
         List<Collider2D> deleteColliders = new List<Collider2D>();
         for (int i = 0; i < m_SpawnOptions.Length; i++)
@@ -118,14 +123,15 @@ public class MouseSpawner : MonoBehaviour
             }
 
             m_TilePosition.z = m_SpawnOptions[m_CurrentSpawnIndex].m_SpawnZ;
-            GameObject newSpawn = Instantiate(m_SpawnOptions[m_CurrentSpawnIndex].m_Prefab, m_TilePosition, Quaternion.identity);     
-            return true;   
+            GameObject newSpawn = Instantiate(m_SpawnOptions[m_CurrentSpawnIndex].m_Prefab, m_TilePosition, Quaternion.identity);
+            return true;
         }
         return false;
     }
 
     private bool DeleteObject()
     {
+        OnChange.Invoke();
         List<Collider2D> deleteColliders = new List<Collider2D>();
         for (int i = 0; i < m_SpawnOptions.Length; i++)
         {
@@ -167,7 +173,7 @@ public class MouseSpawner : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            changed = DeleteObject() ? true : changed; 
+            changed = DeleteObject() ? true : changed;
         }
 
         // Checks for any changes before regenerating the environment (an expensive operation)

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Construct : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class Construct : MonoBehaviour
     public int m_CurrentHealth = 10;
 
     public TemporaryAnimation m_SpawnAnimation;
-    
+
     public int m_BuildingSpawnVisibilityIndex = 9;
 
     public GameObject m_HitPrefab;

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectSpawner : MonoBehaviour
@@ -16,7 +15,7 @@ public class EffectSpawner : MonoBehaviour
         }
         else
         {
-            Instantiate(Effects[_iEffectIndex], this.gameObject.transform.position, Quaternion.Inverse( gameObject.transform.rotation ));
+            Instantiate(Effects[_iEffectIndex], this.gameObject.transform.position, Quaternion.Inverse(gameObject.transform.rotation));
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimatedCharacterSprite : MonoBehaviour
 {
     [Header("Core Components")]
     public SpriteRenderer m_Renderer;
+
     public CharacterSpriteData m_SpriteData;
 
     [Header("Running")]
     public int m_CurrentRunAnimationIndex = 0;
+
     public int m_MaxRunAnimationIndex = 2;
 
     private float m_DistanceTravelled = 0.0f;
@@ -20,6 +20,7 @@ public class AnimatedCharacterSprite : MonoBehaviour
 
     [Header("Attacking")]
     public bool m_IsAttacking;
+
     public Vector3 m_AttackPosition;
 
     public int m_CurrentAttackAnimationIndex = 0;
