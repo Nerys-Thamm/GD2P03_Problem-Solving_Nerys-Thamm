@@ -94,7 +94,7 @@ public class Swarm : MonoBehaviour
 
         //Combine the behavior vectors and send the result to the motor
 
-        m_motor.SetDirection(cohesion + alignment + avoidance + seeking + wallavoidance + flowfield);
+        m_motor.SetDirection((GetMeanPosition(GetAINeighbors()) != Vector2.zero ? cohesion : Vector2.zero) + alignment + avoidance + seeking + wallavoidance + flowfield);
     }
 
     /// <summary>
