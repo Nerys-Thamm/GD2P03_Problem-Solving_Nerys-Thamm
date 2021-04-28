@@ -23,17 +23,13 @@ public class Motor : MonoBehaviour
     Vector2 m_velocity;
     Vector2 m_direction;
 
-    //Declare Inspector-Tweakable values
-    [Range(0.0f, 10.0f)]
-    public float m_speed_multiplier;
-
-    [Range(0.0001f, 20.0f)]
-    public float m_max_speed;
-
-    [Range(0.0f, 1.0f)]
-    public float m_collision_radius;
+    public MotorData m_data;
+    
 
     public AnimatedCharacterSpriteHelper m_animhelper;
+
+    float m_time_since_start;
+    float m_time_since_stop;
 
     /// <summary>
     /// Sets the direction.
@@ -61,6 +57,8 @@ public class Motor : MonoBehaviour
     {
         //Randomises starting direction
         m_direction = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+        m_time_since_start = 0;
+        m_time_since_stop = 0;
     }
 
     // ********************************************************************************
@@ -70,16 +68,31 @@ public class Motor : MonoBehaviour
     // ********************************************************************************
     private void Update()
     {
+        if (m_velocity.magnitude > 0.1)
+        {
+            m_time_since_start += Time.deltaTime;
+            m_time_since_stop = 0;
+        }
+        else
+        {
+            m_time_since_stop += Time.deltaTime;
+            m_time_since_start = 0;
+        }
         //Get the new direction using velocity and the inputted direction
-        Vector3 newDirection = Vector3.RotateTowards(m_velocity, m_direction.normalized, Time.deltaTime * 2, 1.0f);
+        Vector3 newDirection = Vector3.RotateTowards(m_velocity.normalized, m_direction.normalized, Time.deltaTime * 3, 1.0f);
+
+        float adjusted_speed_mult = (m_data.m_inertia.Evaluate((m_direction.normalized - m_velocity.normalized).magnitude) + m_data.m_accel.Evaluate(m_time_since_start) + m_data.m_decel.Evaluate(m_time_since_stop)) * m_data.m_speed_multiplier;
 
         //Get the new velocity from the new direction and speed
-        m_velocity = ((Vector3)newDirection * m_speed_multiplier) * Time.deltaTime;
+        m_velocity = (newDirection *  adjusted_speed_mult) * Time.deltaTime;
+
+        
+    
 
         //Clamp speed below max speed
-        if (m_velocity.sqrMagnitude > m_max_speed * m_max_speed)
+        if (m_velocity.sqrMagnitude > m_data.m_max_speed * m_data.m_max_speed)
         {
-            m_velocity = m_velocity.normalized * m_max_speed;
+            m_velocity = m_velocity.normalized * m_data.m_max_speed;
         }
 
         //Check that the enemy is not in the attacking state
@@ -89,6 +102,6 @@ public class Motor : MonoBehaviour
             transform.position += (Vector3)m_velocity;
         }
         //Set the animation based on the movement of the enemy
-        m_animhelper.m_Velocity = newDirection * m_speed_multiplier;
+        m_animhelper.m_Velocity = newDirection * adjusted_speed_mult;
     }
 }

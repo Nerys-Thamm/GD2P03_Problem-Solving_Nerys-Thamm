@@ -96,7 +96,7 @@ public class NavGrid : MonoBehaviour
             c.m_direction = Vector2.zero;
             c.m_traversable = true;
 
-            Collider2D hit = Physics2D.OverlapBox(c.m_position, Vector3.one, 0, layermask);
+            Collider2D hit = Physics2D.OverlapBox(c.m_position, Vector3.one/2, 0, layermask);
             if (hit != null)
             {
                 if (hit.CompareTag("Wall"))
@@ -116,9 +116,9 @@ public class NavGrid : MonoBehaviour
         {
             Cell cell = cells_to_process.Dequeue();//Get cell from the queue
             //Offsets around the cell to check
-            Vector2[] offsets = { new Vector2(-1, -1), new Vector2(0, -1), new Vector2(1, -1), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1), new Vector2(-1, 1), new Vector2(-1, 0), new Vector2(0, 0) };
+            Vector2[] offsets = { new Vector2(0, 1), new Vector2(1, 0), new Vector2(0, -1), new Vector2(-1, 0), new Vector2(1, 1), new Vector2(1, -1), new Vector2(-1, -1), new Vector2(-1, 1), new Vector2(0, 0) };
             //Set best defaults
-            float bestdistance = float.MaxValue;
+            float bestdistance = 6500;
             Vector2 bestoffset = Vector2.zero;
             //Iterate through each offset
             foreach (Vector2 offset in offsets)
@@ -128,21 +128,42 @@ public class NavGrid : MonoBehaviour
                 if (!((neighborpos.x < 0 || neighborpos.x >= m_width) || (neighborpos.y < 0 || neighborpos.y >= m_height))) //Check that the cell is in bounds
                 {
                     //If the Neighboring cell has a larger distaance than this one, set the neighboring cells distance to be this plus one
-                    if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance > cell.m_distance && m_grid[(int)neighborpos.x, (int)neighborpos.y].m_traversable)
+                    if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance > cell.m_distance )
                     {
-                        m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance = cell.m_distance + 1;
+                        if(m_grid[(int)neighborpos.x, (int)neighborpos.y].m_traversable)
+                        {
+                            m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance = cell.m_distance + 1;
+                        }
+                    
+                        
+                        
 
                     }
-                    //If the distance is larger, add it to the queue to be checked
-                    if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance > cell.m_distance)
-                    {
-                        cells_to_process.Enqueue(m_grid[(int)neighborpos.x, (int)neighborpos.y]);
-                    }
+                    
                     //if the neighbor distance is smaller than the current best, set it as the best
                     if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance < bestdistance)
                     {
                         bestdistance = m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance;
                         bestoffset = offset;
+                    }
+                   
+                }
+            }
+            foreach (Vector2 offset in offsets)
+            {
+                Vector2 neighborpos = cell.m_index + offset; //Get index of the offset cell
+
+                if (!((neighborpos.x < 0 || neighborpos.x >= m_width) || (neighborpos.y < 0 || neighborpos.y >= m_height))) //Check that the cell is in bounds
+                {
+                    
+                    if (!m_grid[(int)neighborpos.x, (int)neighborpos.y].m_traversable)
+                    {
+                        continue;
+                    }
+                    //If the distance is larger, add it to the queue to be checked
+                    if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance > cell.m_distance)
+                    {
+                        cells_to_process.Enqueue(m_grid[(int)neighborpos.x, (int)neighborpos.y]);
                     }
                 }
             }
@@ -200,6 +221,7 @@ public class NavGrid : MonoBehaviour
             for (int j = 0; j < m_height; j++)
             {
                 Vector3 pos = new Vector3(((m_cellradius * 2) * i + m_cellradius) + m_origin.x, ((m_cellradius * 2) * j + m_cellradius) + m_origin.y, 0);
+                
                 Gizmos.DrawWireCube(pos, Vector3.one * m_cellradius * 2);
                 if (m_grid != null)
                 {

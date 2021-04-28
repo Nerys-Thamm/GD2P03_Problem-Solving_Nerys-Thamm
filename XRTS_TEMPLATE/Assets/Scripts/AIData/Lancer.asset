@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f11a09fd38d9cb409f949b1e238e842, type: 3}
   m_Name: Lancer
   m_EditorClassIdentifier: 
-  m_neighbor_detect_radius: 1.98
+  m_neighbor_detect_radius: 2
   m_neighbor_seek_multiplier: 0.374
   m_neighbor_avoid_radius: 1.65
   m_neighbor_avoid_multiplier: 0.956

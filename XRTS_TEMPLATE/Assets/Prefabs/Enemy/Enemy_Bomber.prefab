@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_velocity: {x: 0, y: 0}
   m_data: {fileID: 11400000, guid: afb1cfa65f65c4946a1caa1fbfaadcb9, type: 2}
+  m_flowfieldvector: {x: 0, y: 0}
 --- !u!114 &4450976239678182465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,11 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4033930145a720e478f35d2b351b2fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_velocity: {x: 0, y: 0}
-  m_direction: {x: 0, y: 0}
-  m_speed_multiplier: 1
-  m_max_speed: 1
-  m_collision_radius: 1
+  m_data: {fileID: 11400000, guid: 791ad7d51a68cc94fa36c118f2ce399a, type: 2}
   m_animhelper: {fileID: 3355518187775016532}
 --- !u!114 &2726883618373786551
 MonoBehaviour:
