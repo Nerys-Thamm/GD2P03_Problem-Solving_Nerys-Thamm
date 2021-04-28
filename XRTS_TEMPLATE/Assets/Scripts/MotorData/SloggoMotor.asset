@@ -12,24 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b48ad1cad87194d9de1d04bdda4386, type: 3}
   m_Name: SloggoMotor
   m_EditorClassIdentifier: 
-  m_speed_multiplier: 0
-  m_max_speed: 0
+  m_speed_multiplier: 0.99
+  m_max_speed: 0.1
   m_accel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_decel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_inertia:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.026124882
+      outSlope: -0.026124882
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.18055555
+    - serializedVersion: 3
+      time: 1.0046997
+      value: 0.79888153
+      inSlope: -0.7435202
+      outSlope: -0.7435202
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13325304
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_collision_radius: 0

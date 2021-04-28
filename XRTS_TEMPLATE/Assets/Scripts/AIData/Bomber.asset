@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f11a09fd38d9cb409f949b1e238e842, type: 3}
   m_Name: Bomber
   m_EditorClassIdentifier: 
-  m_neighbor_detect_radius: 4.45
-  m_neighbor_seek_multiplier: 0.26
-  m_neighbor_avoid_radius: 2
-  m_neighbor_avoid_multiplier: 0.465
+  m_neighbor_detect_radius: 1.96
+  m_neighbor_seek_multiplier: 0.378
+  m_neighbor_avoid_radius: 1.63
+  m_neighbor_avoid_multiplier: 0.329
   m_wall_avoid_multiplier: 0.091
-  m_neighbor_align_multiplier: 0.442
-  m_goal_seek_multiplier: 0.537
-  m_flow_field_multiplier: 0.077
+  m_neighbor_align_multiplier: 0.38
+  m_goal_seek_multiplier: 0.677
+  m_flow_field_multiplier: 0.173

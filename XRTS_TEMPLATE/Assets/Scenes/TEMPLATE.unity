@@ -21816,7 +21816,7 @@ MonoBehaviour:
     m_SpawnZ: 0
     m_UISprite: {fileID: 3166233740036603118, guid: 156330dae2d788048bd8d17959251f78,
       type: 3}
-  - m_Blocking: 0
+  - m_Blocking: 1
     m_LayerMask:
       serializedVersion: 2
       m_Bits: 1024
@@ -21825,7 +21825,7 @@ MonoBehaviour:
     m_SpawnZ: 0
     m_UISprite: {fileID: -4306613086922448828, guid: 91fcb9ec87c6a5344897624b99036025,
       type: 3}
-  - m_Blocking: 0
+  - m_Blocking: 1
     m_LayerMask:
       serializedVersion: 2
       m_Bits: 1024
@@ -21834,7 +21834,7 @@ MonoBehaviour:
     m_SpawnZ: 0
     m_UISprite: {fileID: -5810505651898032311, guid: 7a2f2b1669b4536488355bb2ea30dc7e,
       type: 3}
-  - m_Blocking: 0
+  - m_Blocking: 1
     m_LayerMask:
       serializedVersion: 2
       m_Bits: 1024

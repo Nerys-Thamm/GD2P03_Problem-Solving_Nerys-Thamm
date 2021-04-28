@@ -42,8 +42,8 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        
-        if (framecount > 10) framecount = 0;
+        int distributionmod = 1 + (m_Enemies.Count / 20);
+        if (framecount > distributionmod) framecount = 0;
 
         // Constantly checks and removes any null enemies (ones destroyed or cleared somehow)
         for (int i = m_Enemies.Count - 1; i >= 0; i--)
@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                if(i % 10 == framecount)
+                if(i % distributionmod == framecount)
                 {
                     m_Enemies[i].GetComponent<Swarm>().UpdateAI();
                 }

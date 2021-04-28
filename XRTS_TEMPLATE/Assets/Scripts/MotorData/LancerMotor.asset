@@ -12,24 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b48ad1cad87194d9de1d04bdda4386, type: 3}
   m_Name: LancerMotor
   m_EditorClassIdentifier: 
-  m_speed_multiplier: 0
-  m_max_speed: 0
+  m_speed_multiplier: 2.41
+  m_max_speed: 0.14
   m_accel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.15808105
+      inSlope: 0.22302528
+      outSlope: 0.22302528
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.42255545
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.9425334
+      outSlope: 1.9425334
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07564849
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_decel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.515383
+      outSlope: -2.515383
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.04761905
+    - serializedVersion: 3
+      time: 1.001831
+      value: 0.002357483
+      inSlope: -0.040507115
+      outSlope: -0.040507115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.52182543
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_inertia:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.061109204
+      outSlope: -0.061109204
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.28678098
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.079002
+      outSlope: -3.079002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.05978304
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_collision_radius: 0
