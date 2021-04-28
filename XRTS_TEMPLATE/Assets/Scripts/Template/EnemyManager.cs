@@ -36,17 +36,28 @@ public class EnemyManager : MonoBehaviour
         return m_ConstructManager.GetConstruct();
     }
 
+    int framecount = 0;
     /// <summary>
     /// Update is called every frame.
     /// </summary>
     private void Update()
     {
+        
+        if (framecount > 10) framecount = 0;
+
         // Constantly checks and removes any null enemies (ones destroyed or cleared somehow)
         for (int i = m_Enemies.Count - 1; i >= 0; i--)
         {
             if (!m_Enemies[i])
             {
                 m_Enemies.RemoveAt(i);
+            }
+            else
+            {
+                if(i % 10 == framecount)
+                {
+                    m_Enemies[i].GetComponent<Swarm>().UpdateAI();
+                }
             }
         }
         //--Nerys--
@@ -57,6 +68,8 @@ public class EnemyManager : MonoBehaviour
             ToggleAI();
         }
         //---------
+
+        framecount++;
     }
 
     //--Nerys--

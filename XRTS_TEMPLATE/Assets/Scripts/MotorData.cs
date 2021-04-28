@@ -8,7 +8,7 @@ public class MotorData : ScriptableObject
     [Range(0.0f, 10.0f)]
     public float m_speed_multiplier;
 
-    [Range(0.0001f, 20.0f)]
+    [Range(0.0001f, 2.0f)]
     public float m_max_speed;
 
     public AnimationCurve m_accel;

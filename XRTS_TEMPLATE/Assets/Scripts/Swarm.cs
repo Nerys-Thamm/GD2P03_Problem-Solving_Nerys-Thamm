@@ -51,24 +51,29 @@ public class Swarm : MonoBehaviour
         m_collider = GetComponent<Collider2D>();
         m_motor = GetComponent<Motor>();
         m_sprite = GetComponent<AnimatedCharacterSprite>();
+        m_AI_neighbors = new List<Transform>();
     }
 
-    // ********************************************************************************
-    /// <summary>
-    /// Update is called once per frame
-    /// </summary>
-    // ********************************************************************************
-    private void Update()
+    Vector2 cohesion;
+    Vector2 alignment;
+    Vector2 avoidance;
+    Vector2 wallavoidance;
+    Vector2 flowfield;
+    Vector2 seeking;
+
+    List<Transform> m_AI_neighbors;
+
+    public void UpdateAI()
     {
-        
+        m_AI_neighbors = GetAINeighbors();
 
         //-------------------Getting Behaviour Vectors-----------------------------------
-        Vector2 cohesion = ((GetMeanPosition(GetAINeighbors()) - (Vector2)transform.position)).normalized * m_data.m_neighbor_seek_multiplier; //Cohesion, try to move towards the average position of nearby agents
-        Vector2 alignment = (GetMeanDirection(GetAINeighbors()).normalized) * m_data.m_neighbor_align_multiplier; //Alignment, try to align direction with the average direction of nearby agents
-        Vector2 avoidance = GetAvoidanceVelocity(GetAINeighbors()).normalized * m_data.m_neighbor_avoid_multiplier; //Avoidance, try to move away from agents within the avoidance radius
-        Vector2 wallavoidance = GetAvoidanceVelocity(GetWalls()).normalized * m_data.m_wall_avoid_multiplier; //Wall avoidance, try to move away from environment obstacles
-        Vector2 flowfield = m_flowfieldvector * m_data.m_flow_field_multiplier;
-        Vector2 seeking; //Seeking, try to move towards the transform of the target
+        cohesion = ((GetMeanPosition(m_AI_neighbors) - (Vector2)transform.position)).normalized * m_data.m_neighbor_seek_multiplier; //Cohesion, try to move towards the average position of nearby agents
+        alignment = (GetMeanDirection(m_AI_neighbors).normalized) * m_data.m_neighbor_align_multiplier; //Alignment, try to align direction with the average direction of nearby agents
+        avoidance = GetAvoidanceVelocity(m_AI_neighbors).normalized * m_data.m_neighbor_avoid_multiplier; //Avoidance, try to move away from agents within the avoidance radius
+        wallavoidance = GetAvoidanceVelocity(GetWalls()).normalized * m_data.m_wall_avoid_multiplier; //Wall avoidance, try to move away from environment obstacles
+        flowfield = m_flowfieldvector * m_data.m_flow_field_multiplier;
+
 
         if (m_goal != null)//If a goal is targeted find the vector for seeking behaviour
         {
@@ -81,8 +86,8 @@ public class Swarm : MonoBehaviour
         //-------------------------------------------------------------------------------
 
         //--------------Drawing Debugging lines for behaviour vectors--------------------
-        Debug.DrawLine(transform.position, GetMeanPosition(GetAINeighbors()), Color.blue);
-        Debug.DrawRay(GetMeanPosition(GetAINeighbors()), alignment.normalized, Color.white);
+        Debug.DrawLine(transform.position, GetMeanPosition(m_AI_neighbors), Color.blue);
+        Debug.DrawRay(GetMeanPosition(m_AI_neighbors), alignment.normalized, Color.white);
         Debug.DrawRay(transform.position, avoidance.normalized, Color.red);
         Debug.DrawRay(transform.position, wallavoidance.normalized, Color.red);
         Debug.DrawRay(transform.position, flowfield.normalized, Color.grey);
@@ -94,7 +99,17 @@ public class Swarm : MonoBehaviour
 
         //Combine the behavior vectors and send the result to the motor
 
-        m_motor.SetDirection((GetMeanPosition(GetAINeighbors()) != Vector2.zero ? cohesion : Vector2.zero) + alignment + avoidance + seeking + wallavoidance + flowfield);
+        m_motor.SetDirection((GetMeanPosition(m_AI_neighbors) != Vector2.zero ? cohesion : Vector2.zero) + alignment + avoidance + seeking + wallavoidance + flowfield);
+    }
+
+    // ********************************************************************************
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
+    // ********************************************************************************
+    private void Update()
+    {
+        
     }
 
     /// <summary>
@@ -114,6 +129,7 @@ public class Swarm : MonoBehaviour
     {
         List<Transform> neighbors = new List<Transform>();
         Collider2D[] neighborColliders = Physics2D.OverlapCircleAll(transform.position, m_data.m_neighbor_detect_radius); //Get colliders in range
+        int count = 0;
         foreach (Collider2D c in neighborColliders)
         {
             //Do a raycast of the vector and collect all collisions
@@ -126,6 +142,7 @@ public class Swarm : MonoBehaviour
                 if (hit.collider != null && hit.collider.gameObject.CompareTag("Wall"))
                 {
                     pathblocked = true;
+                    break;
                 }
             }
             if (!pathblocked)
@@ -139,6 +156,7 @@ public class Swarm : MonoBehaviour
                     m_goal = c.transform; //target it
                 }
             }
+            if (++count > 5) break;
         }
         return neighbors; //return all AI agents found
     }
