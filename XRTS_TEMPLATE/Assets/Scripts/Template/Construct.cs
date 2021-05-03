@@ -16,7 +16,7 @@ public class Construct : MonoBehaviour
     {
         // Hooks us up to the construct manager by default so that we can find it later without searching the scene
         FindObjectOfType<ConstructManager>().m_Constructs.Add(this);
-
+        FindObjectOfType<ConstructManager>().GenerateThisFrame = true;
         m_CurrentHealth = m_MaxHealth;
     }
 

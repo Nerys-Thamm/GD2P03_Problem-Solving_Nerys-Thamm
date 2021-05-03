@@ -235,7 +235,7 @@ public class NavGrid : MonoBehaviour
     private void Start()
     {
         Create();
-        GenerateFlowfield();
+        
     }
 
     // Update is called once per frame

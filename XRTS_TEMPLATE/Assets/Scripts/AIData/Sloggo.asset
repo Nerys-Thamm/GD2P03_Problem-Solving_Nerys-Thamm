@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f11a09fd38d9cb409f949b1e238e842, type: 3}
   m_Name: Sloggo
   m_EditorClassIdentifier: 
-  m_neighbor_detect_radius: 2
-  m_neighbor_seek_multiplier: 0.377
-  m_neighbor_avoid_radius: 2
-  m_neighbor_avoid_multiplier: 0.768
-  m_wall_avoid_multiplier: 0.753
-  m_neighbor_align_multiplier: 0.729
-  m_goal_seek_multiplier: 0.362
-  m_flow_field_multiplier: 0.196
+  m_neighbor_detect_radius: 2.45
+  m_neighbor_seek_multiplier: 0.371
+  m_neighbor_avoid_radius: 0.99
+  m_neighbor_avoid_multiplier: 0.558
+  m_wall_avoid_multiplier: 0.648
+  m_neighbor_align_multiplier: 0.82
+  m_goal_seek_multiplier: 0.521
+  m_flow_field_multiplier: 0.422

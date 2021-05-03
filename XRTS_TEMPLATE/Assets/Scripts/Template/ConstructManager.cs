@@ -4,7 +4,9 @@ using UnityEngine.Events;
 
 public class ConstructManager : MonoBehaviour
 {
-    public UnityEvent OnConstructDestroyed;
+    public UnityEvent OnNavGenerate;
+
+    public bool GenerateThisFrame = false;
 
     public List<Construct> m_Constructs = new List<Construct>(128);
 
@@ -28,9 +30,18 @@ public class ConstructManager : MonoBehaviour
         {
             if (!m_Constructs[i])
             {
-                OnConstructDestroyed.Invoke();
+                GenerateThisFrame = true;
                 m_Constructs.RemoveAt(i);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if(GenerateThisFrame)
+        {
+            OnNavGenerate.Invoke();
+            GenerateThisFrame = false;
         }
     }
 }

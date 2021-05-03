@@ -8,7 +8,7 @@ public class ScenarioManager : MonoBehaviour
 
     public EnvironmentGenerator m_EnvironmentGenerator;
     //public PathfindingGrid m_PathfindingGrid; // <--- REMOVE
-    public NavGrid m_NavGrid;
+    
     public StatsManager m_StatsManager;
 
     public MouseSpawner.SpawnOption m_WallSpawn;
@@ -244,7 +244,7 @@ public class ScenarioManager : MonoBehaviour
             m_EnvironmentGenerator.CalculateSprites();
             //m_PathfindingGrid.ClearPathfindingNodes(); // <--- REMOVE
             //m_PathfindingGrid.GeneratePathfindingNodes(); // <--- REMOVE
-            m_NavGrid.GenerateFlowfield();
+            
             m_StatsManager.ResetStats();
 
             m_StatsManager.SetupScenario(chosenScenario);

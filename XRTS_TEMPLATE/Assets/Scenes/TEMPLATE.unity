@@ -11834,7 +11834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a815aded584f00d46b2ce62ead11308a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnConstructDestroyed:
+  OnNavGenerate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 837754347}
@@ -11848,6 +11848,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  GenerateThisFrame: 0
   m_Constructs: []
 --- !u!114 &927352250
 MonoBehaviour:
@@ -11900,7 +11901,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MouseSpawner: {fileID: 1850081976}
   m_EnvironmentGenerator: {fileID: 260259699}
-  m_NavGrid: {fileID: 837754347}
   m_StatsManager: {fileID: 519420033}
   m_WallSpawn:
     m_Blocking: 0
