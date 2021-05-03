@@ -6754,6 +6754,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6846,6 +6847,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c1712ba020bd44194e6ac1095e74f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EnemyManager: {fileID: 927352247}
+  m_ConstructManager: {fileID: 927352249}
+  m_ScenarioManager: {fileID: 927352253}
+  m_ToggleRecordingKey: 120
+  m_ClearKey: 99
+  m_ToggleVisibilityKey: 118
+  m_Visible: 1
+  m_Recording: 1
+  m_BoxOrigin: {x: 0.235, y: 0.865}
+  m_BoxScale: {x: 0.45, y: 0.25}
+  m_TextScale: 1.25
+  m_TextUpdateLength: 0.25
+  m_TextColour: {r: 1, g: 1, b: 1, a: 1}
+  m_GraphPointsColour: {r: 0.972549, g: 0.827451, b: 0.1254902, a: 0.5019608}
+  m_GraphBoxColour: {r: 1, g: 1, b: 1, a: 1}
+  m_GraphLineColour: {r: 1, g: 1, b: 1, a: 0.2509804}
+  m_LowLineColour: {r: 1, g: 0.10980392, b: 0.10980392, a: 1}
+  m_AverageLineColour: {r: 0.972549, g: 0.827451, b: 0.1254902, a: 1}
+  m_HighLineColour: {r: 0.15294118, g: 0.8392157, b: 0.11372549, a: 1}
+  m_FramesRecorded: 1000
+  m_FramesDisplayedSampleRange: 100
+  m_MinFramesDisplayed: 30
+  m_SecondsDisplayed: 3
 --- !u!1001 &519437290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11745,6 +11781,7 @@ GameObject:
   - component: {fileID: 927352248}
   - component: {fileID: 927352249}
   - component: {fileID: 927352247}
+  - component: {fileID: 927352253}
   - component: {fileID: 927352250}
   - component: {fileID: 927352251}
   - component: {fileID: 927352252}
@@ -11849,6 +11886,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CursorLocked: 1
+--- !u!114 &927352253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927352246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32eb283c5b11bf4eab0e5ac75e5fcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MouseSpawner: {fileID: 1850081976}
+  m_EnvironmentGenerator: {fileID: 260259699}
+  m_NavGrid: {fileID: 837754347}
+  m_StatsManager: {fileID: 519420033}
+  m_WallSpawn:
+    m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    m_Prefab: {fileID: 5260250825605880261, guid: 8ffdadcfd605b0142b678d9fb6073206,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 0}
+  m_ConstructSpawn:
+    m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    m_Prefab: {fileID: 3284123110915717213, guid: 8d9117bc8d06c62448ef1eb8b2abb205,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 0}
+  m_Enemy1Spawn:
+    m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    m_Prefab: {fileID: 812587709661616510, guid: aa8c825116a4ae44187fd8550791c5ee,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 0}
+  m_Enemy2Spawn:
+    m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    m_Prefab: {fileID: 8613953921341708834, guid: d870f767e53356949aa0c91c95c2935b,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 0}
+  m_Enemy3Spawn:
+    m_Blocking: 0
+    m_LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    m_Prefab: {fileID: 3355518187775016528, guid: 613b5ca7f935626459a1223d7e947c3b,
+      type: 3}
+    m_SpawnZ: 0
+    m_UISprite: {fileID: 0}
+  m_ClearLayerMask:
+    serializedVersion: 2
+    m_Bits: 1792
 --- !u!1001 &930155038
 PrefabInstance:
   m_ObjectHideFlags: 0
