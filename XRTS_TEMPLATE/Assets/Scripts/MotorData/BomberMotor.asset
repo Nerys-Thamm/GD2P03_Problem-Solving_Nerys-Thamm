@@ -12,24 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b48ad1cad87194d9de1d04bdda4386, type: 3}
   m_Name: BomberMotor
   m_EditorClassIdentifier: 
-  m_speed_multiplier: 0
-  m_max_speed: 0
+  m_speed_multiplier: 0.77
+  m_max_speed: 0.13
   m_accel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.62282413
+      outSlope: 0.62282413
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11904762
+    - serializedVersion: 3
+      time: 0.50894165
+      value: 1
+      inSlope: 6.851072
+      outSlope: 6.851072
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.029761879
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_decel:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 1
+      inSlope: -0.9976273
+      outSlope: -0.9976273
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0041809
+      value: 0.002357483
+      inSlope: -0.9976273
+      outSlope: -0.9976273
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_inertia:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.059486486
+      outSlope: -0.059486486
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09523809
+    - serializedVersion: 3
+      time: 1.0046997
+      value: 0.79888153
+      inSlope: -0.5299729
+      outSlope: -0.5299729
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04365082
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_collision_radius: 0
