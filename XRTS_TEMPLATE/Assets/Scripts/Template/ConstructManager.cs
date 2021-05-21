@@ -34,14 +34,12 @@ public class ConstructManager : MonoBehaviour
                 m_Constructs.RemoveAt(i);
             }
         }
-    }
-
-    private void LateUpdate()
-    {
-        if(GenerateThisFrame)
+        if (GenerateThisFrame)
         {
             OnNavGenerate.Invoke();
             GenerateThisFrame = false;
         }
     }
+
+   
 }

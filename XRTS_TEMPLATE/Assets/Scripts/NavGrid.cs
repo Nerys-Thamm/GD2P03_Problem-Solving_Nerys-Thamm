@@ -112,18 +112,20 @@ public class NavGrid : MonoBehaviour
             }
         }
         //Recursively populate direction vectors | TODO: Fix bug causing spaces less than 3x3 cells wide to not populate.
+        Cell cell;
+        Vector2[] offsets = { new Vector2(0, 1), new Vector2(1, 0), new Vector2(0, -1), new Vector2(-1, 0), new Vector2(1, 1), new Vector2(1, -1), new Vector2(-1, -1), new Vector2(-1, 1), new Vector2(0, 0) };
+        Vector2 neighborpos;
         while (cells_to_process.Count > 0)
         {
-            Cell cell = cells_to_process.Dequeue();//Get cell from the queue
-            //Offsets around the cell to check
-            Vector2[] offsets = { new Vector2(0, 1), new Vector2(1, 0), new Vector2(0, -1), new Vector2(-1, 0), new Vector2(1, 1), new Vector2(1, -1), new Vector2(-1, -1), new Vector2(-1, 1), new Vector2(0, 0) };
+            cell = cells_to_process.Dequeue();//Get cell from the queue
+            
             //Set best defaults
             float bestdistance = 6500;
             Vector2 bestoffset = Vector2.zero;
             //Iterate through each offset
             foreach (Vector2 offset in offsets)
             {
-                Vector2 neighborpos = cell.m_index + offset; //Get index of the offset cell
+                neighborpos = cell.m_index + offset; //Get index of the offset cell
                 
                 if (!((neighborpos.x < 0 || neighborpos.x >= m_width) || (neighborpos.y < 0 || neighborpos.y >= m_height))) //Check that the cell is in bounds
                 {
@@ -134,12 +136,7 @@ public class NavGrid : MonoBehaviour
                         {
                             m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance = cell.m_distance + 1;
                         }
-                    
-                        
-                        
-
                     }
-                    
                     //if the neighbor distance is smaller than the current best, set it as the best
                     if (m_grid[(int)neighborpos.x, (int)neighborpos.y].m_distance < bestdistance)
                     {
@@ -151,11 +148,9 @@ public class NavGrid : MonoBehaviour
             }
             foreach (Vector2 offset in offsets)
             {
-                Vector2 neighborpos = cell.m_index + offset; //Get index of the offset cell
-
+                neighborpos = cell.m_index + offset; //Get index of the offset cell
                 if (!((neighborpos.x < 0 || neighborpos.x >= m_width) || (neighborpos.y < 0 || neighborpos.y >= m_height))) //Check that the cell is in bounds
                 {
-                    
                     if (!m_grid[(int)neighborpos.x, (int)neighborpos.y].m_traversable)
                     {
                         continue;
