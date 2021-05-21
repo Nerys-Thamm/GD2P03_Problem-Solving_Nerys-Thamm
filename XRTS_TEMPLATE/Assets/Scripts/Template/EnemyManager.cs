@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
     /// <summary>
     /// Update is called every frame.
     /// </summary>
-    private void Update()
+    private void LateUpdate()
     {
         int distributionmod = 1 + (m_Enemies.Count / 20);
         if (framecount > distributionmod) framecount = 0;
@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                if(i % distributionmod == framecount)
+                if(i % distributionmod == framecount && !m_ConstructManager.GenerateThisFrame)
                 {
                     m_Enemies[i].GetComponent<Swarm>().UpdateAI();
                 }

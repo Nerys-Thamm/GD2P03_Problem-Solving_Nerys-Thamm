@@ -95,7 +95,7 @@ public class MouseSpawner : MonoBehaviour
 
     private bool PlaceObject()
     {
-        OnChange.Invoke();
+        
         bool blockedPlacement = false;
         List<Collider2D> deleteColliders = new List<Collider2D>();
         for (int i = 0; i < m_SpawnOptions.Length; i++)
