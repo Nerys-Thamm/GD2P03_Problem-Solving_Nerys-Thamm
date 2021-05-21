@@ -26,7 +26,7 @@ public class StatsManager : MonoBehaviour
     public float m_TextUpdateLength = 0.25f;
     private float m_TextUpdateTime = float.MinValue;
 
-    private Material m_Material;
+    public Material m_Material;
 
     [Header("Colours")]
     public Color m_TextColour =         new Color(255.0f / 255.0f,      255.0f / 255.0f,    255.0f / 255.0f,    255.0f / 255.0f);
